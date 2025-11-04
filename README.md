@@ -1,73 +1,99 @@
-# React + TypeScript + Vite
+# Red-Black Tree Search Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a final assignment that implements a **search feature** using the  
+**Red-Black Tree (RBT)** data structure. Users can type queries into a search input,  
+and the application will return matching results using the RBT search algorithm.
 
-Currently, two official plugins are available:
+The project is built with **React + TypeScript**, and includes a clean folder  
+architecture for structure, readability, and scalability.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 📁 Folder Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+src/
+├── components/
+├── data/
+├── structures/
+├── utils/
+├── App.tsx
+└── main.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Below is the explanation of each folder:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📂 **components/**
+
+This folder contains all **React UI components**, such as reusable visual elements.
+
+### Example contents:
+
+- **SearchBar.tsx** — input field where the user types the search query
+- **SearchResult.tsx** — displays the results returned from the RBT
+- **TreeVisualizer.tsx** _(optional)_ — visual representation of the tree
+
+### Purpose:
+
+- Keeps UI logic separated from data structures
+- Makes components reusable and easier to maintain
+
+---
+
+## 📂 **data/**
+
+This folder stores static or sample data used in the application.
+
+### Example:
+
+- **dataset.json** — list of items inserted into the Red-Black Tree
+
+### Purpose:
+
+- Provides initial data for testing search
+- Makes the app reproducible with the same dataset
+
+---
+
+## 📂 **structures/**
+
+This folder contains the **core logic of the Red-Black Tree**.
+
+### Example contents:
+
+- **RedBlackTree.ts** — full RBT implementation (insert, rotate, recolor, search)
+- **Node.ts** — node class used by the tree
+
+### Purpose:
+
+- Separates algorithm logic from UI
+- Makes it clear for lecturers that RBT is implemented manually
+- Easier to test and document
+
+---
+
+## 📂 **utils/**
+
+Contains helper or utility functions that support the app.
+
+### Example:
+
+- **formatCurrency.ts** — example utility to format numbers
+- **stringHelpers.ts** — string manipulation helpers
+
+### Purpose:
+
+- Keeps helper functions organized and reusable
+- Prevents cluttering components with unrelated logic
+
+---
+
+## 🛠️ Installation & Running
+
+### 1. Install dependencies
+
+```bash
+npm install
 ```
