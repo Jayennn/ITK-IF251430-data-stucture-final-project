@@ -90,10 +90,22 @@ Contains helper or utility functions that support the app.
 
 ---
 
-## 🛠️ Installation & Running
+## Installation & Running
 
 ### 1. Install dependencies
 
 ```bash
 npm install
+```
+
+### 2. Install dependencies
+
+```bash
+npm run dev
+```
+
+### 3. Build for production
+
+```bash
+npm run build
 ```
