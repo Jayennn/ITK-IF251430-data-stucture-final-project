@@ -1,32 +1,22 @@
 export enum Color {
   RED = 'RED',
-  BLACK = 'BLACK'
-};
-
+  BLACK = 'BLACK',
+}
 
 export class Node<K, V> {
   readonly key: K;
-  value: V;
+  _data: V;
+  _color: Color;
   _left!: Node<K, V>;
   _right!: Node<K, V>;
   _parent!: Node<K, V>;
-  _color: Color = Color.RED;
 
-  constructor(key: K, value: V) {
+  constructor(key: K, data: V) {
     this.key = key;
-    this.value = value;
+    this._data = data;
     this._color = Color.RED;
+    // this._left = null;
+    // this._right = null;
+    // this._parent = null;
   }
-
-  isRed(): boolean {
-    return this._color === Color.RED;
-  };
-
-  isBlack(): boolean {
-    return this._color === Color.BLACK;
-  };
-
-  setColor(color: Color): void {
-    this._color = color;
-  };
-};
+}

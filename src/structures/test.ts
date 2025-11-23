@@ -1,13 +1,17 @@
-import { RedBlackTree } from "./tree";
-
+import { RedBlackTree } from './tree';
 
 const tree = new RedBlackTree<number, string>();
 
-// Tambah beberapa data
-tree.insert(10, "sepuluh");
-tree.insert(5, "lima");
-tree.insert(20, "dua puluh");
-tree.insert(15, "lima belas");
+tree.insert(10, 'Sepuluh');
+tree.insert(5, 'Lima');
+tree.insert(1, 'Satu');
+tree.insert(7, 'Tujuh');
+tree.insert(40, 'Empat Puluh');
+tree.insert(30, 'Tiga Puluh');
+tree.insert(70, 'Tujuh Puluh');
+tree.insert(80, 'Delapan Puluh');
+tree.insert(35, 'Tiga Puluh Lima');
+tree.insert(6, 'Enam');
+const root = tree.getRoot();
 
-// Tampilkan isi pohon (in-order traversal)
-tree.inOrderTraversal(tree.root);
+console.log(tree.inOrderTraversal(root));
