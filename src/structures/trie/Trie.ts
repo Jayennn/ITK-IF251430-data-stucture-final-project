@@ -1,6 +1,6 @@
 import { TrieNode } from './TrieNode';
 
-class Trie {
+export class Trie {
   private root: TrieNode;
 
   constructor() {
@@ -73,4 +73,4 @@ const words = [
 const trie = new Trie();
 
 words.forEach((word) => trie.insert(word));
-console.log(trie.suggest('hel'));
+console.log(trie.suggest('e'));
