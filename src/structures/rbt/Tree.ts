@@ -1,7 +1,7 @@
-import { Color, Node } from './Node';
+import { Color, Node } from './TreeNode';
 
 export class RedBlackTree<K, V> {
-  private root: Node<K, V>;
+  private _root: Node<K, V>;
   private readonly NIL: Node<K, V>;
 
   constructor() {
@@ -11,10 +11,10 @@ export class RedBlackTree<K, V> {
     this.NIL._right = this.NIL;
     this.NIL._parent = this.NIL;
 
-    this.root = this.NIL;
+    this._root = this.NIL;
   }
 
-  public insert(key: K, data: V): void {
+  public insert(key: K, data: V): V {
     const node = new Node(key, data);
     node._color = Color.RED;
     node._left = this.NIL;
@@ -22,7 +22,7 @@ export class RedBlackTree<K, V> {
     node._parent = this.NIL;
 
     let parent: Node<K, V> = this.NIL;
-    let current: Node<K, V> = this.root;
+    let current: Node<K, V> = this._root;
 
     while (current !== this.NIL) {
       parent = current;
@@ -36,7 +36,7 @@ export class RedBlackTree<K, V> {
     node._parent = parent;
 
     if (parent === this.NIL) {
-      this.root = node;
+      this._root = node;
     } else if (node.key < parent.key) {
       parent._left = node;
     } else {
@@ -44,6 +44,7 @@ export class RedBlackTree<K, V> {
     }
 
     this.fixInsert(node);
+    return node._data;
   }
 
   private leftRotate(x: Node<K, V>): void {
@@ -57,7 +58,7 @@ export class RedBlackTree<K, V> {
     y._parent = x._parent;
 
     if (x._parent === this.NIL) {
-      this.root = y;
+      this._root = y;
     } else if (x === x._parent._left) {
       x._parent._left = y;
     } else {
@@ -79,7 +80,7 @@ export class RedBlackTree<K, V> {
     y._parent = x._parent;
 
     if (x._parent === this.NIL) {
-      this.root = y;
+      this._root = y;
     } else if (x === x._parent._right) {
       x._parent._right = y;
     } else {
@@ -143,7 +144,7 @@ export class RedBlackTree<K, V> {
       }
     }
 
-    this.root._color = Color.BLACK;
+    this._root._color = Color.BLACK;
   }
 
   private printHelper(root: Node<K, V>): void {
@@ -166,7 +167,7 @@ export class RedBlackTree<K, V> {
     this.inOrderTraversal(root._right);
   }
 
-  public getRoot(): Node<K, V> {
-    return this.root;
+  public get root(): Node<K, V> {
+    return this._root;
   }
 }

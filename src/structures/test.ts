@@ -11,5 +11,5 @@ dictionaries.forEach((dict): void => {
   console.log(dict.keyword, tree.insert(dict.keyword, dict));
 });
 
-const root = tree.getRoot();
+const root = tree.root;
 console.log(tree.inOrderTraversal(root));
