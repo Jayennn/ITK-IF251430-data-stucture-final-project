@@ -4,7 +4,7 @@ export enum Color {
 }
 
 export class Node<K, V> {
-  readonly key: K;
+  private readonly _key: K;
   _data: V;
   _color: Color;
   _left!: Node<K, V>;
@@ -12,11 +12,20 @@ export class Node<K, V> {
   _parent!: Node<K, V>;
 
   constructor(key: K, data: V) {
-    this.key = key;
+    this._key = key;
     this._data = data;
     this._color = Color.RED;
-    // this._left = null;
-    // this._right = null;
-    // this._parent = null;
+  }
+
+  public get key(): K {
+    return this._key;
+  }
+
+  public get data(): V {
+    return this._data;
+  }
+
+  public toString(): string {
+    return `Node(\nkey:\n${this.key})`;
   }
 }

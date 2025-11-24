@@ -1,4 +1,4 @@
-import { Color, Node } from './node';
+import { Color, Node } from './Node';
 
 export class RedBlackTree<K, V> {
   private root: Node<K, V>;
@@ -155,7 +155,7 @@ export class RedBlackTree<K, V> {
       color = 'B';
     }
 
-    console.log(`${root._data} (${color})`);
+    console.log(`${root.key} (${color})`);
   }
 
   public inOrderTraversal(root: Node<K, V>): void {

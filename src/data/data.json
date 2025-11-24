@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "keyword": "algorithm",
+      "definition": "A step-by-step procedure to solve a problem or perform a computation."
+    },
+    {
+      "keyword": "binary tree",
+      "definition": "A hierarchical data structure in which each node has at most two child nodes."
+    },
+    {
+      "keyword": "cache",
+      "definition": "A hardware or software component that stores data so future requests can be served faster."
+    },
+    {
+      "keyword": "database",
+      "definition": "An organized collection of structured information or data stored electronically."
+    },
+    {
+      "keyword": "encapsulation",
+      "definition": "An OOP principle that bundles data and methods operating on that data within one unit."
+    }
+  ]
+}
