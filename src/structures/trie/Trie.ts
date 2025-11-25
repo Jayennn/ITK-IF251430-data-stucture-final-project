@@ -36,7 +36,7 @@ export class Trie {
 
     for (const char of prefix) {
       if (!node.children.has(char)) {
-        return []; // prefix tidak ada
+        return [];
       }
       node = node.children.get(char)!;
       current += char;
@@ -59,18 +59,18 @@ export class Trie {
   }
 }
 
-const words = [
-  'hello',
-  'dog',
-  'hell',
-  'cat',
-  'a',
-  'hel',
-  'help',
-  'helps',
-  'helping',
-];
-const trie = new Trie();
+// const words = [
+//   'hello',
+//   'dog',
+//   'hell',
+//   'cat',
+//   'a',
+//   'hel',
+//   'help',
+//   'helps',
+//   'helping',
+// ];
+// const trie = new Trie();
 
-words.forEach((word) => trie.insert(word));
-console.log(trie.suggest('e'));
+// words.forEach((word) => trie.insert(word));
+// console.log(trie.suggest('e'));

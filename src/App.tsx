@@ -1,28 +1,25 @@
 function App() {
   return (
     <div className="h-screen flex items-center justify-center">
-      <div className="container mx-auto font-geist text-zinc-800">
+      <div className="container max-w-3xl mx-auto font-geist text-zinc-800">
         {/* FORM */}
         <div className="flex items-center justify-center">
           <div className="flex flex-col">
-            <div className="text-5xl font-semibold tracking-tighter">
+            <div className="text-4xl font-semibold tracking-tighter">
               Masukkan Kata Kunci!
             </div>
             <form className="mt-6 flex flex-row items-center justify-between gap-4">
               <input
-                className="w-full text-lg font-medium border border-zinc-400 h-12 p-4 rounded-lg"
+                className="w-full text-lg font-medium border border-zinc-400 h-11 p-4 rounded-sm"
                 type="text"
                 placeholder="e.g Pesawat F106"
               />
-              <button className="text-lg font-medium flex items-center justify-center bg-zinc-800 text-zinc-100 h-12 p-4 rounded-md">
-                Cari!
-              </button>
             </form>
           </div>
         </div>
 
         {/* FORM RESULTS */}
-        <div className="mt-24 grid grid-cols-2 lg:grid-cols-3 gap-2">
+        <div className="mt-24 grid grid-cols-2 lg:grid-cols-1 gap-2">
           {Array.from([1, 2, 3, 4]).map((i) => {
             return (
               <div

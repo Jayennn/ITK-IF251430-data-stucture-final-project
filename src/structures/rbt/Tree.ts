@@ -1,6 +1,7 @@
+import type { Entry } from '../../models/entry';
 import { Color, Node } from './TreeNode';
 
-export class RedBlackTree<K, V> {
+export class RedBlackTree<K, V extends Entry> {
   private _root: Node<K, V>;
   private readonly NIL: Node<K, V>;
 
@@ -45,6 +46,24 @@ export class RedBlackTree<K, V> {
 
     this.fixInsert(node);
     return node._data;
+  }
+
+  public search(keyword: string): V | undefined {
+    let current = this._root;
+
+    while (current !== null) {
+      if (current.key === keyword) {
+        return current._data;
+      }
+
+      if (keyword < current.key) {
+        current = current._left;
+      } else {
+        current = current._right;
+      }
+    }
+
+    return undefined;
   }
 
   private leftRotate(x: Node<K, V>): void {
@@ -159,7 +178,32 @@ export class RedBlackTree<K, V> {
     console.log(`${root.key} (${color})`);
   }
 
-  public inOrderTraversal(root: Node<K, V>): void {
+  public getNodesByKeyword(keyword: string): V[] {
+    const result: V[] = [];
+
+    this.getNodesByKeywordRecursive(this._root, keyword, result);
+
+    return result;
+  }
+
+  private getNodesByKeywordRecursive(
+    currentNode: Node<K, V>,
+    keyword: string,
+    result: V[]
+  ) {
+    if (currentNode === this.NIL) return;
+
+    const keyString = currentNode._data.keyword.toLowerCase();
+
+    if (keyString.includes(keyword.toLowerCase())) {
+      result.push(currentNode._data);
+    }
+
+    this.getNodesByKeywordRecursive(currentNode._left, keyword, result);
+    this.getNodesByKeywordRecursive(currentNode._right, keyword, result);
+  }
+
+  public inOrderTraversal(root: Node<K, V> = this._root): void {
     if (root === this.NIL) return;
 
     this.inOrderTraversal(root._left);
