@@ -193,9 +193,13 @@ export class RedBlackTree<K, V extends Entry> {
   ) {
     if (currentNode === this.NIL) return;
 
-    const keyString = currentNode._data.keyword.toLowerCase();
+    const keyword_id = currentNode._data.keyword_id.toLowerCase();
+    const keyword_en = currentNode._data.keyword_en.toLowerCase();
 
-    if (keyString.includes(keyword.toLowerCase())) {
+    if (
+      keyword_id.includes(keyword.toLowerCase()) ||
+      keyword_en.includes(keyword.toLowerCase())
+    ) {
       result.push(currentNode._data);
     }
 

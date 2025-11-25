@@ -7,28 +7,31 @@ import dummy from '../data/data.json';
 const dictionaries: Entry[] = dummy.data;
 const dictionariesWithEasterEgg: Entry[] = [
   {
-    keyword: 'naruto',
+    keyword_id: 'naruto',
+    keyword_en: 'naruto',
     definition: 'naruto',
     easterEgg: () => console.log('testing easter egg'),
   },
 ];
 
-const tree = new RedBlackTree<Entry['keyword'], Entry>();
+const tree = new RedBlackTree<string, Entry>();
 const trie = new Trie();
 
 dictionaries.forEach((dict): void => {
-  tree.insert(dict.keyword, dict);
-  trie.insert(dict.keyword);
+  tree.insert(dict.keyword_id, dict);
+  tree.insert(dict.keyword_en, dict);
+  trie.insert(dict.keyword_id);
 });
 
 dictionariesWithEasterEgg.forEach((dict): void => {
-  tree.insert(dict.keyword, dict);
+  tree.insert(dict.keyword_id, dict);
+  tree.insert(dict.keyword_en, dict);
 });
 
 const root = tree.root;
 // const suggestion = trie.suggest('al');
-const byKeyword = tree.getNodesByKeyword('a');
-const search = tree.search('algorithm');
+const byKeyword = tree.getNodesByKeyword('database');
+// const search = tree.search('algorithm');
 
 byKeyword.forEach((entry) => {
   if (!entry.easterEgg) return;
@@ -36,5 +39,5 @@ byKeyword.forEach((entry) => {
 });
 
 console.log(byKeyword);
-console.log(search);
-console.log(tree.inOrderTraversal(root));
+// console.log(search);
+// console.log(tree.inOrderTraversal(root));

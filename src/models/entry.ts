@@ -1,5 +1,6 @@
 export type Entry = {
-  keyword: string;
+  keyword_id: string;
+  keyword_en: string;
   definition: string;
   easterEgg?: (() => unknown) | null;
 };

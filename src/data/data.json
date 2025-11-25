@@ -1,24 +1,229 @@
 {
   "data": [
     {
-      "keyword": "algorithm",
-      "definition": "A step-by-step procedure to solve a problem or perform a computation."
+      "keyword_id": "algoritma",
+      "keyword_en": "algorithm",
+      "definition": "Prosedur langkah demi langkah untuk menyelesaikan masalah atau melakukan komputasi."
     },
     {
-      "keyword": "binary tree",
-      "definition": "A hierarchical data structure in which each node has at most two child nodes."
+      "keyword_id": "pohon biner",
+      "keyword_en": "binary tree",
+      "definition": "Struktur data hierarkis di mana setiap node memiliki paling banyak dua child node."
     },
     {
-      "keyword": "cache",
-      "definition": "A hardware or software component that stores data so future requests can be served faster."
+      "keyword_id": "cache",
+      "keyword_en": "cache",
+      "definition": "Komponen hardware atau software yang menyimpan data agar permintaan di masa depan dapat dilayani lebih cepat."
     },
     {
-      "keyword": "database",
-      "definition": "An organized collection of structured information or data stored electronically."
+      "keyword_id": "basis data",
+      "keyword_en": "database",
+      "definition": "Kumpulan informasi atau data terstruktur yang tersimpan secara elektronik."
     },
     {
-      "keyword": "encapsulation",
-      "definition": "An OOP principle that bundles data and methods operating on that data within one unit."
+      "keyword_id": "enkapsulasi",
+      "keyword_en": "encapsulation",
+      "definition": "Prinsip OOP yang menggabungkan data dan metode yang beroperasi pada data tersebut dalam satu unit."
+    },
+    {
+      "keyword_id": "fungsi",
+      "keyword_en": "function",
+      "definition": "Blok kode yang dapat digunakan kembali untuk melakukan tugas tertentu."
+    },
+    {
+      "keyword_id": "graf",
+      "keyword_en": "graph",
+      "definition": "Struktur data yang terdiri dari node (vertex) dan edge yang menghubungkan node-node tersebut."
+    },
+    {
+      "keyword_id": "hash table",
+      "keyword_en": "hash table",
+      "definition": "Struktur data yang memetakan kunci ke nilai untuk pencarian data yang efisien."
+    },
+    {
+      "keyword_id": "inheritance",
+      "keyword_en": "inheritance",
+      "definition": "Mekanisme OOP di mana class baru mewarisi properti dan metode dari class yang sudah ada."
+    },
+    {
+      "keyword_id": "json",
+      "keyword_en": "json",
+      "definition": "JavaScript Object Notation, format pertukaran data yang ringan dan mudah dibaca."
+    },
+    {
+      "keyword_id": "kernel",
+      "keyword_en": "kernel",
+      "definition": "Inti dari sistem operasi yang mengelola operasi komputer dan hardware."
+    },
+    {
+      "keyword_id": "linked list",
+      "keyword_en": "linked list",
+      "definition": "Struktur data linear di mana setiap elemen menunjuk ke elemen berikutnya."
+    },
+    {
+      "keyword_id": "memori",
+      "keyword_en": "memory",
+      "definition": "Komponen hardware yang menyimpan data dan instruksi untuk diproses oleh CPU."
+    },
+    {
+      "keyword_id": "node",
+      "keyword_en": "node",
+      "definition": "Unit dasar dalam struktur data seperti tree atau graph yang menyimpan data."
+    },
+    {
+      "keyword_id": "oop",
+      "keyword_en": "oop",
+      "definition": "Object-Oriented Programming, paradigma pemrograman berdasarkan konsep objek."
+    },
+    {
+      "keyword_id": "pointer",
+      "keyword_en": "pointer",
+      "definition": "Variabel yang menyimpan alamat memori dari variabel lain."
+    },
+    {
+      "keyword_id": "queue",
+      "keyword_en": "queue",
+      "definition": "Struktur data FIFO (First In First Out) seperti antrian."
+    },
+    {
+      "keyword_id": "rekursi",
+      "keyword_en": "recursion",
+      "definition": "Teknik di mana fungsi memanggil dirinya sendiri untuk menyelesaikan masalah."
+    },
+    {
+      "keyword_id": "stack",
+      "keyword_en": "stack",
+      "definition": "Struktur data LIFO (Last In First Out) seperti tumpukan piring."
+    },
+    {
+      "keyword_id": "thread",
+      "keyword_en": "thread",
+      "definition": "Unit terkecil dari eksekusi dalam sebuah proses yang dapat dijadwalkan oleh OS."
+    },
+    {
+      "keyword_id": "url",
+      "keyword_en": "url",
+      "definition": "Uniform Resource Locator, alamat unik untuk mengidentifikasi resource di internet."
+    },
+    {
+      "keyword_id": "variabel",
+      "keyword_en": "variable",
+      "definition": "Wadah untuk menyimpan nilai data dalam program."
+    },
+    {
+      "keyword_id": "web server",
+      "keyword_en": "web server",
+      "definition": "Software yang menangani permintaan HTTP dan mengirimkan halaman web ke client."
+    },
+    {
+      "keyword_id": "xml",
+      "keyword_en": "xml",
+      "definition": "Extensible Markup Language, bahasa markup untuk menyimpan dan mentransfer data."
+    },
+    {
+      "keyword_id": "array",
+      "keyword_en": "array",
+      "definition": "Struktur data yang menyimpan kumpulan elemen dengan tipe data yang sama dalam urutan tertentu."
+    },
+    {
+      "keyword_id": "api",
+      "keyword_en": "api",
+      "definition": "Application Programming Interface, set aturan yang memungkinkan aplikasi berkomunikasi satu sama lain."
+    },
+    {
+      "keyword_id": "kompiler",
+      "keyword_en": "compiler",
+      "definition": "Program yang menerjemahkan kode sumber ke dalam bahasa mesin."
+    },
+    {
+      "keyword_id": "debugging",
+      "keyword_en": "debugging",
+      "definition": "Proses menemukan dan memperbaiki bug atau error dalam program."
+    },
+    {
+      "keyword_id": "framework",
+      "keyword_en": "framework",
+      "definition": "Platform software yang menyediakan fondasi untuk mengembangkan aplikasi."
+    },
+    {
+      "keyword_id": "git",
+      "keyword_en": "git",
+      "definition": "Sistem kontrol versi terdistribusi untuk melacak perubahan kode sumber."
+    },
+    {
+      "keyword_id": "loop",
+      "keyword_en": "loop",
+      "definition": "Struktur kontrol yang mengulang blok kode sampai kondisi tertentu terpenuhi."
+    },
+    {
+      "keyword_id": "sintaks",
+      "keyword_en": "syntax",
+      "definition": "Aturan yang mendefinisikan kombinasi simbol yang dianggap sebagai program yang benar."
+    },
+    {
+      "keyword_id": "metode",
+      "keyword_en": "method",
+      "definition": "Fungsi yang terkait dengan objek atau class dalam pemrograman berorientasi objek."
+    },
+    {
+      "keyword_id": "protokol",
+      "keyword_en": "protocol",
+      "definition": "Set aturan yang menentukan bagaimana data ditransmisikan melalui jaringan."
+    },
+    {
+      "keyword_id": "query",
+      "keyword_en": "query",
+      "definition": "Permintaan informasi dari database menggunakan bahasa query seperti SQL."
+    },
+    {
+      "keyword_id": "runtime",
+      "keyword_en": "runtime",
+      "definition": "Periode ketika program sedang dieksekusi atau berjalan."
+    },
+    {
+      "keyword_id": "sorting",
+      "keyword_en": "sorting",
+      "definition": "Proses mengatur data dalam urutan tertentu (ascending atau descending)."
+    },
+    {
+      "keyword_id": "testing",
+      "keyword_en": "testing",
+      "definition": "Proses evaluasi sistem atau komponen untuk menemukan apakah memenuhi persyaratan."
+    },
+    {
+      "keyword_id": "interface",
+      "keyword_en": "interface",
+      "definition": "Kontrak yang mendefinisikan metode yang harus diimplementasikan oleh class."
+    },
+    {
+      "keyword_id": "indeks",
+      "keyword_en": "index",
+      "definition": "Struktur data yang meningkatkan kecepatan operasi pengambilan data dalam database."
+    },
+    {
+      "keyword_id": "library",
+      "keyword_en": "library",
+      "definition": "Kumpulan kode yang telah dikompilasi dan dapat digunakan kembali dalam program."
+    },
+    {
+      "keyword_id": "modul",
+      "keyword_en": "module",
+      "definition": "Unit software independen yang berisi kode untuk fungsionalitas tertentu."
+    },
+    {
+      "keyword_id": "parsing",
+      "keyword_en": "parsing",
+      "definition": "Proses menganalisis string atau teks sesuai dengan aturan grammar formal."
+    },
+    {
+      "keyword_id": "refactoring",
+      "keyword_en": "refactoring",
+      "definition": "Proses restrukturisasi kode tanpa mengubah perilaku eksternalnya."
+    },
+    {
+      "keyword_id": "token",
+      "keyword_en": "token",
+      "definition": "Unit terkecil dalam analisis leksikal yang memiliki makna dalam bahasa pemrograman."
     }
   ]
 }
