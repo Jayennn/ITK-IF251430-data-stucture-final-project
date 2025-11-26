@@ -1,56 +1,63 @@
 import { ArrowUp, Search } from 'lucide-react';
+import { useDictionary } from './hooks/useDictionary';
 import { usePagination } from './hooks/usePagination';
+import { cn } from './lib/utils';
 
 function App() {
-  // const {} = usePagination()
+  const { results, search } = useDictionary();
+  const { data, totalPages, currentPage, setCurrentPage } = usePagination(
+    results,
+    5
+  );
+
   return (
-    <div className="flex items-center justify-center bg-[#F0E7D5] text-[#212842]">
-      <div className="container max-w-3xl mx-auto font-geist">
-        <div className="mt-100 flex items-center justify-center">
-          <div className="w-full flex flex-col items-center">
-            <div className="text-4xl font-semibold tracking-tighter">
-              Ambatupedia!
-            </div>
-            <div className="absolute h-screen pt-10 w-full flex justify-center">
-              <form className="bg-[#F0E7D5] z-10 sticky top-6 w-full max-w-xl mt-4 flex items-center justify-between border h-12 rounded-full">
-                <div className="w-full flex items-center p-4">
-                  <Search size={16} />
-                  <input
-                    className="ml-3 w-full outline-0 "
-                    type="text"
-                    placeholder="e.g Pesawat"
-                  />
-                </div>
-                <div className="px-1.5">
-                  <button className="inline-flex items-center justify-center h-9 w-9 px-4 py-2 bg-[#212842] rounded-full">
-                    <span className="text-[#F0E7D5] inline-flex items-center justify-center p-0 m-0 w-6 h-6">
-                      <ArrowUp size={16} />
-                    </span>
-                  </button>
-                </div>
-              </form>
-            </div>
+    <div className="min-h-screen bg-[#F0E7D5] text-[#212842]">
+      <div className="container max-w-3xl mx-auto font-geist px-4">
+        {/* Header */}
+        <div className="pt-20 flex items-center justify-center">
+          <div className="text-4xl font-semibold tracking-tighter">
+            Ambatupedia!
           </div>
         </div>
 
-        {/* FORM RESULTS */}
-        <div className="mt-24 h-full grid grid-cols-1 gap-2">
-          {Array.from({ length: 5 }).map((index) => {
+        {/* Sticky Search Form */}
+        <div className="sticky top-6 z-10 py-4">
+          <form className="bg-[#F0E7D5] w-full max-w-xl mx-auto flex items-center justify-between border border-[#212842] h-12 rounded-full shadow-sm">
+            <div className="w-full flex items-center p-4">
+              <Search size={16} />
+              <input
+                onChange={(e) => search(e.target.value)}
+                className="ml-3 w-full outline-0 bg-transparent"
+                type="text"
+                placeholder="e.g Pesawat"
+              />
+            </div>
+            <div className="px-1.5">
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center h-9 w-9 px-4 py-2 bg-[#212842] rounded-full"
+              >
+                <span className="text-[#F0E7D5] inline-flex items-center justify-center p-0 m-0 w-6 h-6">
+                  <ArrowUp size={16} />
+                </span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        {/* Results */}
+        <div className="mt-4 pb-8 grid grid-cols-1 gap-2">
+          {data.map(({ keyword_id, definition }) => {
             return (
               <div
-                key={index}
-                className="w-fit border border-[#212842] rounded-md"
+                key={keyword_id}
+                className="w-full border border-[#212842] rounded-md"
               >
                 <div className="flex flex-col py-6 px-4 gap-2">
                   <h2 className="font-bold tracking-tighter text-3xl">
-                    Pesawat
+                    {keyword_id}
                   </h2>
-                  <p className="text-base/8 text-justify">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Excepturi voluptas ullam dolorem inventore libero sapiente
-                    vero repudiandae minus, laudantium quia! Voluptates mollitia
-                    hic omnis obcaecati itaque cum eveniet dolores ad!
-                  </p>
+                  <p className="text-base/8 text-justify">{definition}</p>
                 </div>
               </div>
             );
@@ -59,10 +66,27 @@ function App() {
 
         {/* Pagination */}
         <div className="my-4 flex items-center justify-between">
-          Page: 1
+          Total Pages: {totalPages}
           <div className="flex gap-2">
-            <button className="border w-8 h-8">1</button>
-            <button className="border w-8 h-8">2</button>
+            {Array.from({ length: totalPages }, (_, index) => {
+              const pageNumber = index + 1;
+              const isActive = currentPage === pageNumber;
+
+              return (
+                <button
+                  onClick={() => setCurrentPage(pageNumber)}
+                  key={index}
+                  className={cn(
+                    'border border-[#212842] w-8 h-8 rounded transition-colors',
+                    isActive
+                      ? 'bg-[#212842] text-[#F0E7D5]'
+                      : 'hover:bg-[#212842] hover:text-[#F0E7D5]'
+                  )}
+                >
+                  {pageNumber}
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>

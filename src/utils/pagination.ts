@@ -1,14 +1,14 @@
-type PaginationProps = {
-  data: number[];
+type PaginationProps<T> = {
+  data: T[];
   _currentPage: number;
   _perPage?: number;
 };
 
-export function pagination({
+export function pagination<T>({
   data,
   _currentPage,
   _perPage = 5,
-}: PaginationProps) {
+}: PaginationProps<T>) {
   if (data.length === 0) return;
 
   const startIndex = (_currentPage - 1) * _perPage;

@@ -1,7 +1,7 @@
 import type { Entry } from '../../models/entry';
 import { Color, Node } from './TreeNode';
 
-export class RedBlackTree<K, V extends Entry> {
+export class RedBlackTree<K extends string, V extends Entry> {
   private _root: Node<K, V>;
   private readonly NIL: Node<K, V>;
 
@@ -27,7 +27,13 @@ export class RedBlackTree<K, V extends Entry> {
 
     while (current !== this.NIL) {
       parent = current;
-      if (key < current.key) {
+
+      if (this.compare(key, current.key) === 0) {
+        // console.log(key, current.key);
+        throw new Error('Duplicate key');
+      }
+
+      if (this.compare(key, current.key) < 0) {
         current = current._left;
       } else {
         current = current._right;
@@ -38,7 +44,7 @@ export class RedBlackTree<K, V extends Entry> {
 
     if (parent === this.NIL) {
       this._root = node;
-    } else if (node.key < parent.key) {
+    } else if (this.compare(node.key, parent.key) < 0) {
       parent._left = node;
     } else {
       parent._right = node;
@@ -51,7 +57,7 @@ export class RedBlackTree<K, V extends Entry> {
   public search(keyword: string): V | undefined {
     let current = this._root;
 
-    while (current !== null) {
+    while (current !== this.NIL) {
       if (current.key === keyword) {
         return current._data;
       }
@@ -207,12 +213,45 @@ export class RedBlackTree<K, V extends Entry> {
     this.getNodesByKeywordRecursive(currentNode._right, keyword, result);
   }
 
+  private collectInOrder(node: Node<K, V>, result: V[]): V[] {
+    if (node === this.NIL) return result;
+
+    this.collectInOrder(node._left, result);
+    result.push(node._data);
+    this.collectInOrder(node._right, result);
+
+    return result;
+  }
+
   public inOrderTraversal(root: Node<K, V> = this._root): void {
     if (root === this.NIL) return;
 
     this.inOrderTraversal(root._left);
     this.printHelper(root);
     this.inOrderTraversal(root._right);
+  }
+
+  private compare(a: K, b: K): number {
+    return a.localeCompare(b, 'id');
+  }
+
+  public getTotalNodes(): number {
+    return this.getTotalNodesRecursive(this.root);
+  }
+
+  public getTotalNodesRecursive(currentNode: Node<K, V>): number {
+    if (currentNode === this.NIL) return 0;
+
+    return (
+      1 +
+      this.getTotalNodesRecursive(currentNode._left) +
+      this.getTotalNodesRecursive(currentNode._right)
+    );
+  }
+
+  public getData(): V[] {
+    const result: V[] = [];
+    return this.collectInOrder(this._root, result);
   }
 
   public get root(): Node<K, V> {
