@@ -2,6 +2,7 @@ import { ArrowUp, Search } from 'lucide-react';
 import { useDictionary } from './hooks/useDictionary';
 import { usePagination } from './hooks/usePagination';
 import { cn } from './lib/utils';
+import { useEffect } from 'react';
 
 function App() {
   const { results, search } = useDictionary();
