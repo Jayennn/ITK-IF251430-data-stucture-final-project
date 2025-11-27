@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 function App() {
   const [hasSearched, setHasSearched] = useState<boolean>(false);
   const [keyword, setKeyword] = useState<string>('');
-  const { results, search } = useDictionary();
+  const { results, search, component: Anything } = useDictionary();
   const { data, totalPages, currentPage, setCurrentPage } = usePagination(
     results,
     5
@@ -64,6 +64,7 @@ function App() {
         </div>
 
         {/* Results */}
+        {Anything && <Anything />}
         <div className="w-full mt-4 pb-8 grid grid-cols-1 gap-2">
           {!hasSearched ? null : data.length >= 1 ? (
             data.map(({ keyword_id, definition }) => {

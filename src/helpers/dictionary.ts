@@ -2,6 +2,7 @@ import dummy from '../data/data.json';
 import type { Entry } from '../models/entry';
 import { DictionaryService } from '../services/DictionaryService';
 import { RedBlackTree } from '../structures/rbt/Tree';
+import { Naruto } from '../components/Naruto';
 
 /* Raw Data */
 const dictionary: Entry[] = dummy.data;
@@ -26,13 +27,24 @@ const dictionaryEasterEgg: Entry[] = [
     keyword_en: 'Blur',
     definition:
       'Kondisi penglihatan yang tidak jelas, biasanya terjadi saat bangun tidur atau lupa pakai kacamata.',
-    easterEgg: () => {
-      console.log('test');
+    easterEgg: {
+      action: () => {
+        const root: HTMLElement = document.getElementById('root')!;
 
-      document.body.style.filter = 'blur(5px)';
-      setTimeout(() => {
-        document.body.style.filter = 'blur(0px)';
-      }, 2000);
+        root.classList.add('blur');
+
+        setTimeout(() => {
+          root.classList.remove('blur');
+        }, 5000);
+      },
+    },
+  },
+  {
+    keyword_id: 'Naruto',
+    keyword_en: 'Naruto',
+    definition: 'Lorem ipsum',
+    easterEgg: {
+      component: Naruto,
     },
   },
 ];
@@ -44,6 +56,10 @@ dictionaryEasterEgg.forEach((dict) => {
 
 console.log('EN RBT Total Nodes:', TREE_KEYWORD_EN.getTotalNodes());
 console.log('ID RBT Total Nodes:', TREE_KEYWORD_ID.getTotalNodes());
+
+const query = TREE_KEYWORD_ID.getNodesByKeyword('buram');
+
+console.log(query);
 
 export const dictionaryService = new DictionaryService(
   TREE_KEYWORD_ID,

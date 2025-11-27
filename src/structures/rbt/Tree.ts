@@ -58,6 +58,7 @@ export class RedBlackTree<K extends string, V extends Entry> {
     let current = this._root;
 
     while (current !== this.NIL) {
+      console.log(current);
       if (current.key === keyword) {
         return current._data;
       }

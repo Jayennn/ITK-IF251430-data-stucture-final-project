@@ -1,6 +1,34 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+@import 'tailwindcss';
 
 @theme {
-  --font-geist: "Geist", sans-serif;
+  --font-geist: 'Geist', sans-serif;
+}
+
+.blur {
+  @apply blur-md;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes naruto-run {
+  0% {
+    transform: translateX(-200px);
+  }
+  100% {
+    transform: translateX(120vw);
+  }
+}
+
+.animate-naruto-run {
+  animation: naruto-run 2s linear forwards;
 }
