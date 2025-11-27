@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { dictionaryService } from '../helpers/dictionary';
+import type { Entry } from '../models/entry';
 
 export function useDictionary() {
-  const [results, setResults] = useState(dictionaryService.getAllData());
+  const [results, setResults] = useState<Entry[]>([]);
 
   function search(keyword: string) {
     if (!keyword) {
-      setResults(dictionaryService.getAllData());
+      setResults([]);
     } else {
       const foundResults = dictionaryService.findByKeyword(keyword);
 

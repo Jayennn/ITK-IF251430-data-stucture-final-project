@@ -27,8 +27,8 @@ const dictionaryEasterEgg: Entry[] = [
     definition:
       'Kondisi penglihatan yang tidak jelas, biasanya terjadi saat bangun tidur atau lupa pakai kacamata.',
     easterEgg: () => {
-      // Blur effect pada halaman
       console.log('test');
+
       document.body.style.filter = 'blur(5px)';
       setTimeout(() => {
         document.body.style.filter = 'blur(0px)';

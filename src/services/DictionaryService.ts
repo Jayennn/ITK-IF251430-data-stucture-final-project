@@ -8,6 +8,7 @@ export class DictionaryService {
   ) {}
 
   public getAllData(): Entry[] {
+    this.en_tree.getData();
     return this.id_tree.getData();
   }
 
