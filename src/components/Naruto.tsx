@@ -14,7 +14,7 @@ export function Naruto() {
     return (
       <button
         onClick={() => setRun(true)}
-        className="cursor-pointer fixed bottom-5 z-50 bg-[#FF9408] rounded-full w-20 h-20 flex items-center justify-center shadow-lg"
+        className="cursor-pointer fixed bottom-5 z-50 bg-[#FF9408] rounded-full w-20 h-20 flex items-center justify-center shadow-lg animate-slide-up"
       >
         <img src="/naruto.png" className="w-12 h-12" />
       </button>

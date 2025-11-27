@@ -29,7 +29,7 @@ function App() {
 
   return (
     <div className="min-h-dvh bg-[#F0E7D5] text-[#212842]">
-      <div className="h-full flex flex-col items-center justify-center container max-w-2xl mx-auto font-geist px-4">
+      <div className="h-screen flex flex-col items-center justify-center container max-w-2xl mx-auto font-geist px-4">
         {/* Header */}
         <div className="pt-20 flex items-center justify-center">
           <div className="text-5xl font-semibold tracking-tighter">
@@ -72,13 +72,14 @@ function App() {
             <div className="py-2 w-full flex justify-end gap-2">
               <button
                 onClick={() => setLanguage(Language.ID)}
-                className="cursor-pointer hover:underline decoration-[#212842]"
+                className={cn("cursor-pointer hover:underline decoration-[#212842]", language === Language.ID && "underline")}
               >
                 Indonesia
               </button>
+              |
               <button
                 onClick={() => setLanguage(Language.EN)}
-                className="cursor-pointer hover:underline decoration-[#212842]"
+                className={cn("cursor-pointer hover:underline decoration-[#212842]", language === Language.EN && "underline")}
               >
                 English
               </button>
@@ -116,8 +117,8 @@ function App() {
               }
             )
           ) : (
-            <div className="w-full">
-              <p className="text-center">Data tidak ditemukan</p>
+            <div className="w-full bg-[#212842] border border-[#F0E7D5] rounded-md h-18 flex items-center justify-center">
+              <p className="text-[#F0E7D5] text-center text-xl font-medium tracking-tighter">Data tidak ditemukan</p>
             </div>
           )}
         </div>
