@@ -28,8 +28,8 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F0E7D5] text-[#212842]">
-      <div className="h-screen flex flex-col items-center justify-center container max-w-2xl mx-auto font-geist px-4">
+    <div className="min-h-dvh bg-[#F0E7D5] text-[#212842]">
+      <div className="h-full flex flex-col items-center justify-center container max-w-2xl mx-auto font-geist px-4">
         {/* Header */}
         <div className="pt-20 flex items-center justify-center">
           <div className="text-5xl font-semibold tracking-tighter">
