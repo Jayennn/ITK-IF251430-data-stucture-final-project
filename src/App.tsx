@@ -5,6 +5,7 @@ import { cn } from './lib/utils';
 import React, { useState } from 'react';
 
 function App() {
+  const [hasSearched, setHasSearched] = useState<boolean>(false);
   const [keyword, setKeyword] = useState<string>('');
   const { results, search } = useDictionary();
   const { data, totalPages, currentPage, setCurrentPage } = usePagination(
@@ -14,7 +15,9 @@ function App() {
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setCurrentPage(1);
     search(keyword);
+    setHasSearched(true);
   }
 
   return (
@@ -61,26 +64,32 @@ function App() {
         </div>
 
         {/* Results */}
-        <div className="mt-4 pb-8 grid grid-cols-1 gap-2">
-          {data.map(({ keyword_id, definition }) => {
-            return (
-              <div
-                key={keyword_id}
-                className="w-full border border-[#212842] rounded-md"
-              >
-                <div className="flex flex-col py-6 px-4 gap-2">
-                  <h2 className="capitalize font-bold tracking-tighter text-3xl">
-                    {keyword_id}
-                  </h2>
-                  <p className="text-base/8 text-justify">{definition}</p>
+        <div className="w-full mt-4 pb-8 grid grid-cols-1 gap-2">
+          {!hasSearched ? null : data.length >= 1 ? (
+            data.map(({ keyword_id, definition }) => {
+              return (
+                <div
+                  key={keyword_id}
+                  className="border border-[#212842] rounded-md"
+                >
+                  <div className="flex flex-col py-6 px-4 gap-2">
+                    <h2 className="capitalize font-bold tracking-tighter text-3xl">
+                      {keyword_id}
+                    </h2>
+                    <p className="text-base/8 text-justify">{definition}</p>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })
+          ) : (
+            <div className="w-full">
+              <p className="text-center">Data tidak ditemukan</p>
+            </div>
+          )}
         </div>
 
         {/* Pagination */}
-        {results.length > 0 ? (
+        {totalPages > 1 ? (
           <div className="w-full my-4 flex items-center justify-between">
             Total Pages: {totalPages}
             <div className="flex gap-2">
@@ -106,9 +115,7 @@ function App() {
             </div>
           </div>
         ) : (
-          <>
-            <p>Data tidak ditemukan</p>
-          </>
+          <></>
         )}
       </div>
     </div>
