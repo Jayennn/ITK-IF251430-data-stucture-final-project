@@ -20,7 +20,7 @@ export class Trie {
     node.isWord = true;
   }
 
-  public suggestHelper(node: TrieNode, list: string[], current: string): void {
+  private suggestHelper(node: TrieNode, list: string[], current: string): void {
     if (node.isWord) {
       list.push(current);
     }

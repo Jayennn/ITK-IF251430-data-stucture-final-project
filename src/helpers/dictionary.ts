@@ -3,6 +3,7 @@ import type { Entry } from '../models/entry';
 import { DictionaryService } from '../services/DictionaryService';
 import { RedBlackTree } from '../structures/rbt/Tree';
 import { Naruto } from '../components/Naruto';
+import { Trie } from '../structures/trie/Trie';
 
 /* Raw Data */
 const dictionary: Entry[] = dummy.data;
@@ -16,17 +17,22 @@ const TREE_KEYWORD_EN: RedBlackTree<string, Entry> = new RedBlackTree<
   Entry
 >();
 
+const autocom = new Trie();
+
 dictionary.forEach((dict) => {
   TREE_KEYWORD_ID.insert(dict.keyword_id, dict);
   TREE_KEYWORD_EN.insert(dict.keyword_en, dict);
+  autocom.insert(dict.keyword_id);
 });
 
 const dictionaryEasterEgg: Entry[] = [
   {
     keyword_id: 'Buram',
     keyword_en: 'Blur',
-    definition:
+    definition_id:
       'Kondisi penglihatan yang tidak jelas, biasanya terjadi saat bangun tidur atau lupa pakai kacamata.',
+    definition_en:
+      'A condition of unclear vision, usually occurs when waking up or forgetting to wear glasses.',
     easterEgg: {
       action: () => {
         const root: HTMLElement = document.getElementById('root')!;
@@ -42,7 +48,10 @@ const dictionaryEasterEgg: Entry[] = [
   {
     keyword_id: 'Naruto',
     keyword_en: 'Naruto',
-    definition: 'Lorem ipsum',
+    definition_id:
+      'Serial manga dan anime Jepang yang menceritakan petualangan ninja bernama Naruto Uzumaki.',
+    definition_en:
+      'A Japanese manga and anime series that follows the adventures of a ninja named Naruto Uzumaki.',
     easterEgg: {
       component: Naruto,
     },
@@ -52,14 +61,13 @@ const dictionaryEasterEgg: Entry[] = [
 dictionaryEasterEgg.forEach((dict) => {
   TREE_KEYWORD_ID.insert(dict.keyword_id, dict);
   TREE_KEYWORD_EN.insert(dict.keyword_en, dict);
+  autocom.insert(dict.keyword_id);
 });
 
 console.log('EN RBT Total Nodes:', TREE_KEYWORD_EN.getTotalNodes());
 console.log('ID RBT Total Nodes:', TREE_KEYWORD_ID.getTotalNodes());
 
-const query = TREE_KEYWORD_ID.getNodesByKeyword('buram');
-
-console.log(query);
+console.log(autocom.suggest('a'));
 
 export const dictionaryService = new DictionaryService(
   TREE_KEYWORD_ID,
