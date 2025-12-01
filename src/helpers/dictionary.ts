@@ -4,6 +4,7 @@ import { DictionaryService } from '../services/DictionaryService';
 import { RedBlackTree } from '../structures/rbt/Tree';
 import { Naruto } from '../components/Naruto';
 import { Trie } from '../structures/trie/Trie';
+import { Calculator } from '../components/Calculator';
 
 /* Raw Data */
 const dictionary: Entry[] = dummy.data;
@@ -54,6 +55,15 @@ const dictionaryEasterEgg: Entry[] = [
       'A Japanese manga and anime series that follows the adventures of a ninja named Naruto Uzumaki.',
     easterEgg: {
       component: Naruto,
+    },
+  },
+  {
+    keyword_id: 'Kalkulator',
+    keyword_en: 'Calculator',
+    definition_id: 'lorem',
+    definition_en: 'lorem',
+    easterEgg: {
+      component: Calculator,
     },
   },
 ];

@@ -72,14 +72,20 @@ function App() {
             <div className="py-2 w-full flex justify-end gap-2">
               <button
                 onClick={() => setLanguage(Language.ID)}
-                className={cn("cursor-pointer hover:underline decoration-[#212842]", language === Language.ID && "underline")}
+                className={cn(
+                  'cursor-pointer hover:underline decoration-[#212842]',
+                  language === Language.ID && 'underline'
+                )}
               >
                 Indonesia
               </button>
               |
               <button
                 onClick={() => setLanguage(Language.EN)}
-                className={cn("cursor-pointer hover:underline decoration-[#212842]", language === Language.EN && "underline")}
+                className={cn(
+                  'cursor-pointer hover:underline decoration-[#212842]',
+                  language === Language.EN && 'underline'
+                )}
               >
                 English
               </button>
@@ -117,9 +123,11 @@ function App() {
               }
             )
           ) : (
-            <div className="w-full bg-[#212842] border border-[#F0E7D5] rounded-md h-18 flex items-center justify-center">
-              <p className="text-[#F0E7D5] text-center text-xl font-medium tracking-tighter">Data tidak ditemukan</p>
-            </div>
+            <p className="text-[#212842] text-center text-xl font-medium tracking-tighter">
+              Data tidak ditemukan
+            </p>
+            // <div className="w-full bg-[#212842] border border-[#F0E7D5] rounded-md h-18 flex items-center justify-center">
+            // </div>
           )}
         </div>
 

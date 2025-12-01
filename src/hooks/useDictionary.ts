@@ -40,7 +40,6 @@ export function useDictionary() {
     });
   }
 
-  // Derive translated results *without mutating data*
   const results = useMemo(() => {
     return rawResults.map((entry) => ({
       ...entry,
