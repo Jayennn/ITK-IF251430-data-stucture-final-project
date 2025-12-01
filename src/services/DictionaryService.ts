@@ -8,8 +8,7 @@ export class DictionaryService {
   ) {}
 
   public getAllData(): Entry[] {
-    this.en_tree.getData();
-    return this.id_tree.getData();
+    return [...this.id_tree.getData(), ...this.en_tree.getData()];
   }
 
   public findByKeyword(keyword: string): Entry[] {

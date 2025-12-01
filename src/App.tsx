@@ -4,8 +4,10 @@ import { usePagination } from './hooks/usePagination';
 import { cn } from './lib/utils';
 import React, { useState } from 'react';
 import { Language } from './models/entry';
+import { useSuggestions } from './hooks/useSuggestion';
 
 function App() {
+  const [hideSuggestion, setHideSuggestions] = useState<boolean>(false);
   const [hasSearched, setHasSearched] = useState<boolean>(false);
   const [keyword, setKeyword] = useState<string>('');
   const {
@@ -20,21 +22,41 @@ function App() {
     5
   );
 
+  const suggestions = useSuggestions(keyword, 300);
+
+  const showSuggestions =
+    keyword.length > 0 && suggestions.length > 0 && !hideSuggestion;
+
+  function handleSuggestionClick(suggestion: string) {
+    setKeyword(suggestion);
+    setHideSuggestions(true);
+    setCurrentPage(1);
+    search(suggestion);
+    setHasSearched(true);
+  }
+
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setHideSuggestions(true);
     setCurrentPage(1);
     search(keyword);
     setHasSearched(true);
   }
 
   return (
-    <div className="min-h-dvh bg-[#F0E7D5] text-[#212842]">
-      <div className="h-screen flex flex-col items-center justify-center container max-w-2xl mx-auto font-geist px-4">
+    <div className="min-h-dvh bg-[#F0E7D5] text-[#212842] flex justify-center">
+      <div
+        id="app"
+        className="flex flex-col items-center justify-center container max-w-2xl mx-auto font-geist px-4"
+      >
         {/* Header */}
-        <div className="pt-20 flex items-center justify-center">
-          <div className="text-5xl font-semibold tracking-tighter">
+        <div className="pt-20 flex flex-col gap-2 items-center justify-center">
+          <h1 className="text-6xl font-semibold tracking-tighter">
             Ambatupedia!
-          </div>
+          </h1>
+          <p className="text-[#212842] text-center text-base font-medium tracking-tighter">
+            Switch to Ambatupedia. It’s private and free!
+          </p>
         </div>
 
         {/* Sticky Search Form */}
@@ -42,13 +64,21 @@ function App() {
           <div className="relative flex flex-col items-center justify-center w-full">
             <form
               onSubmit={onSubmit}
-              className="bg-[#F0E7D5] w-full mx-auto flex items-center justify-between border border-[#212842] h-12 rounded-full shadow-sm"
+              className={cn(
+                'bg-[#F0E7D5] relative z-50 w-full mx-auto flex items-center justify-between border border-[#212842] h-12 rounded-full shadow-sm',
+                showSuggestions
+                  ? 'rounded-t-3xl rounded-b-none border-b-transparent shadow-none'
+                  : 'rounded-full shadow-sm'
+              )}
             >
               <div className="w-full flex items-center p-4">
                 <Search size={16} />
                 <input
-                  onChange={(e) => setKeyword(e.target.value)}
-                  className="ml-3 w-full outline-0 bg-transparent"
+                  onChange={(e) => {
+                    setKeyword(e.target.value);
+                    setHideSuggestions(false);
+                  }}
+                  className="ml-3 w-full outline-0 bg-transparent placeholder:text-gray-500"
                   type="text"
                   value={keyword}
                   placeholder="e.g Pesawat"
@@ -59,8 +89,10 @@ function App() {
                   disabled={!keyword}
                   type="submit"
                   className={cn(
-                    'inline-flex items-center justify-center h-9 w-9 px-4 py-2 rounded-full',
-                    !keyword ? 'disabled:bg-[#212842]/50' : 'bg-[#212842]'
+                    'focus:outline-0 inline-flex items-center justify-center h-9 w-9 px-4 py-2 rounded-full transition-colors',
+                    !keyword
+                      ? 'bg-[#212842]/10 cursor-not-allowed'
+                      : 'bg-[#212842]'
                   )}
                 >
                   <span className="text-[#F0E7D5] inline-flex items-center justify-center p-0 m-0 w-6 h-6">
@@ -69,31 +101,52 @@ function App() {
                 </button>
               </div>
             </form>
-            <div className="py-2 w-full flex justify-end gap-2">
+
+            {/* --- AUTO SUGGESTION DROPDOWN --- */}
+            {showSuggestions && (
+              <div className="absolute top-[41px] w-full z-55">
+                <ul className="bg-[#F0E7D5] border border-[#212842] border-t-0 rounded-b-3xl shadow-lg list-none p-0 m-0 max-h-64 overflow-y-hidden -mt-1px">
+                  {suggestions.map((suggestion, index) => (
+                    <li
+                      key={index}
+                      onClick={() => handleSuggestionClick(suggestion)}
+                      className={cn(
+                        'px-4 py-3 cursor-pointer hover:bg-[#212842]/10 flex items-center gap-3 transition-colors',
+                        index !== suggestions.length - 1 &&
+                          'border-b border-[#212842]/10'
+                      )}
+                    >
+                      <Search size={14} className="opacity-50" />
+                      <span>{suggestion}</span>
+                    </li>
+                  ))}
+                  {/* <div className="h-2"></div> */}
+                </ul>
+              </div>
+            )}
+
+            {/* --- LANGUAGE TOGGLE --- */}
+            <div className="relative z-0 py-2 w-full flex justify-end gap-2 text-sm">
               <button
                 onClick={() => setLanguage(Language.ID)}
                 className={cn(
                   'cursor-pointer hover:underline decoration-[#212842]',
-                  language === Language.ID && 'underline'
+                  language === Language.ID && 'underline font-semibold'
                 )}
               >
                 Indonesia
               </button>
-              |
+              <span className="opacity-50">|</span>
               <button
                 onClick={() => setLanguage(Language.EN)}
                 className={cn(
                   'cursor-pointer hover:underline decoration-[#212842]',
-                  language === Language.EN && 'underline'
+                  language === Language.EN && 'underline font-semibold'
                 )}
               >
                 English
               </button>
             </div>
-            {/* <div className="absolute top-10 bg-[#F0E7D5] w-full border border-[#212842] rounded-full">
-              <p>Ayam</p>
-              <p>Ayam</p>
-            </div> */}
           </div>
         </div>
 
@@ -106,12 +159,17 @@ function App() {
                 return (
                   <div
                     key={language === Language.ID ? keyword_id : keyword_en}
-                    className="border border-[#212842] rounded-md"
+                    className="border border-[#212842] hover:bg-[#212842] hover:text-[#F0E7D5]  rounded-md transition-all"
                   >
                     <div className="flex flex-col py-6 px-4 gap-2">
-                      <h2 className="capitalize font-bold tracking-tighter text-3xl">
-                        {language === Language.ID ? keyword_id : keyword_en}
-                      </h2>
+                      <div className="flex flex-col gap-0.5">
+                        <h1 className="capitalize font-bold tracking-tighter text-3xl">
+                          {language === Language.ID ? keyword_id : keyword_en}
+                        </h1>
+                        <h2 className="text-base capitalize font-normal">
+                          {language === Language.EN ? keyword_id : keyword_en}
+                        </h2>
+                      </div>
                       <p className="text-base/8 text-justify">
                         {language === Language.ID
                           ? definition_id
