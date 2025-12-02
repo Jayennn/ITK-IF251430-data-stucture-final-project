@@ -65,6 +65,96 @@
       "keyword_en": "kernel",
       "definition_id": "Inti dari sistem operasi yang mengelola operasi komputer dan hardware.",
       "definition_en": "The core part of an operating system that manages computer operations and hardware."
+    },
+    {
+      "keyword_id": "linked list",
+      "keyword_en": "linked list",
+      "definition_id": "Struktur data linier di mana elemen (node) saling terhubung melalui pointer/referensi.",
+      "definition_en": "A linear data structure where elements (nodes) are connected via pointers/references."
+    },
+    {
+      "keyword_id": "rekursi",
+      "keyword_en": "recursion",
+      "definition_id": "Teknik di mana fungsi memanggil dirinya sendiri untuk memecah masalah menjadi sub-masalah yang lebih kecil.",
+      "definition_en": "A technique where a function calls itself to break down a problem into smaller sub-problems."
+    },
+    {
+      "keyword_id": "stack",
+      "keyword_en": "stack",
+      "definition_id": "Struktur data linier yang mengikuti prinsip LIFO (Last-In, First-Out).",
+      "definition_en": "A linear data structure that follows the LIFO (Last-In, First-Out) principle."
+    },
+    {
+      "keyword_id": "queue",
+      "keyword_en": "queue",
+      "definition_id": "Struktur data linier yang mengikuti prinsip FIFO (First-In, First-Out).",
+      "definition_en": "A linear data structure that follows the FIFO (First-In, First-Out) principle."
+    },
+    {
+      "keyword_id": "heap",
+      "keyword_en": "heap",
+      "definition_id": "Struktur data pohon khusus yang memenuhi sifat heap (biasanya max-heap atau min-heap).",
+      "definition_en": "A specialized tree-based data structure that satisfies the heap property (usually max-heap or min-heap)."
+    },
+    {
+      "keyword_id": "complexity time",
+      "keyword_en": "time complexity",
+      "definition_id": "Analisis yang mengestimasi waktu eksekusi algoritma sebagai fungsi dari ukuran input.",
+      "definition_en": "Analysis that estimates an algorithm's execution time as a function of input size."
+    },
+    {
+      "keyword_id": "pointer",
+      "keyword_en": "pointer",
+      "definition_id": "Variabel yang menyimpan alamat memori dari variabel lain.",
+      "definition_en": "A variable that stores the memory address of another variable."
+    },
+    {
+      "keyword_id": "polimorfisme",
+      "keyword_en": "polymorphism",
+      "definition_id": "Prinsip OOP yang memungkinkan objek untuk mengambil berbagai bentuk atau perilaku.",
+      "definition_en": "An OOP principle that allows objects to take on multiple forms or behaviors."
+    },
+    {
+      "keyword_id": "api",
+      "keyword_en": "api",
+      "definition_id": "Antarmuka Pemrograman Aplikasi, sekumpulan aturan untuk berinteraksi dengan software atau layanan.",
+      "definition_en": "Application Programming Interface, a set of rules for interacting with software or services."
+    },
+    {
+      "keyword_id": "git",
+      "keyword_en": "git",
+      "definition_id": "Sistem kontrol versi terdistribusi untuk melacak perubahan dalam kode sumber selama pengembangan perangkat lunak.",
+      "definition_en": "A distributed version control system for tracking changes in source code during software development."
+    },
+    {
+      "keyword_id": "dynamic programming",
+      "keyword_en": "dynamic programming",
+      "definition_id": "Teknik algoritmik untuk memecah masalah kompleks menjadi sub-masalah yang lebih sederhana dan menyimpan hasilnya.",
+      "definition_en": "An algorithmic technique for breaking complex problems into simpler subproblems and storing their results."
+    },
+    {
+      "keyword_id": "binary search",
+      "keyword_en": "binary search",
+      "definition_id": "Algoritma pencarian yang bekerja pada array terurut dengan membagi interval pencarian menjadi dua secara berulang.",
+      "definition_en": "A search algorithm that works on sorted arrays by repeatedly dividing the search interval in half."
+    },
+    {
+      "keyword_id": "rest",
+      "keyword_en": "rest",
+      "definition_id": "Arsitektur gaya perangkat lunak untuk membuat layanan web yang scalable (Representational State Transfer).",
+      "definition_en": "A software architectural style for creating scalable web services (Representational State Transfer)."
+    },
+    {
+      "keyword_id": "ajax",
+      "keyword_en": "ajax",
+      "definition_id": "Teknik pengembangan web untuk membuat aplikasi web yang interaktif dengan bertukar data secara asinkron.",
+      "definition_en": "A web development technique for creating interactive web applications by exchanging data asynchronously."
+    },
+    {
+      "keyword_id": "closure",
+      "keyword_en": "closure",
+      "definition_id": "Fungsi yang memiliki akses ke variabel dalam lingkup induknya, bahkan setelah fungsi induk selesai dieksekusi.",
+      "definition_en": "A function that has access to variables in its parent scope, even after the parent function has finished executing."
     }
   ]
 }
