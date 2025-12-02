@@ -8,19 +8,24 @@ import { Calculator } from '../components/Calculator';
 import { AutoCompleteService } from '../services/AutoCompleteService';
 
 /* Raw Data */
+// Asumsi 'dummy' memiliki struktur { data: Entry[] }
 const dictionary: Entry[] = dummy.data;
 
+// Inisialisasi Red-Black Tree untuk pencarian cepat
 const TREE_KEYWORD_ID: RedBlackTree<string, Entry> = new RedBlackTree<string, Entry>();
 const TREE_KEYWORD_EN: RedBlackTree<string, Entry> = new RedBlackTree<string, Entry>();
 
+// Inisialisasi Trie untuk Autocomplete
 const autocom = new Trie();
 
+// Memasukkan data dictionary utama ke dalam struktur data
 dictionary.forEach((dict) => {
   TREE_KEYWORD_ID.insert(dict.keyword_id, dict);
   TREE_KEYWORD_EN.insert(dict.keyword_en, dict);
   autocom.insert(dict.keyword_id);
 });
 
+/* Definisi Easter Eggs */
 const dictionaryEasterEgg: Entry[] = [
   {
     keyword_id: 'Buram',
@@ -93,7 +98,7 @@ const dictionaryEasterEgg: Entry[] = [
       },
     },
   },
-  // === New Easter Egg: Hitam ===
+  // === Easter Egg: Hitam (Mengubah latar belakang menjadi hitam) ===
   {
     keyword_id: 'Hitam',
     keyword_en: 'Black',
@@ -105,24 +110,43 @@ const dictionaryEasterEgg: Entry[] = [
       action: () => {
         const root = document.getElementById('root')!;
         root.style.transition = 'background 0.5s ease, color 0.5s ease';
-        root.style.background = 'black';
-        root.style.color = 'white';
+        root.style.background = 'black'; // Menerapkan warna hitam
+        root.style.color = 'white';     // Menerapkan warna teks putih
+      },
+    },
+  },
+  // === Easter Egg: Putih (Mengembalikan latar belakang ke default) ===
+  {
+    keyword_id: 'Putih',
+    keyword_en: 'White',
+    definition_id:
+      'Warna yang memantulkan seluruh cahaya dan membuat tampilan menjadi cerah.',
+    definition_en:
+      'The color that reflects all light and makes the appearance bright.',
+    easterEgg: {
+      action: () => {
+        const root = document.getElementById('root')!;
+        root.style.transition = 'background 0.5s ease, color 0.5s ease';
+        root.style.background = 'initial'; // Mengembalikan background ke nilai default/CSS
+        root.style.color = 'initial';     // Mengembalikan warna teks ke nilai default/CSS
       },
     },
   },
 ];
 
+// Memasukkan data easter egg ke dalam struktur data
 dictionaryEasterEgg.forEach((dict) => {
   TREE_KEYWORD_ID.insert(dict.keyword_id, dict);
   TREE_KEYWORD_EN.insert(dict.keyword_en, dict);
   autocom.insert(dict.keyword_id);
 });
 
+// Pesan log (Opsional)
 console.log('EN RBT Total Nodes:', TREE_KEYWORD_EN.getTotalNodes());
 console.log('ID RBT Total Nodes:', TREE_KEYWORD_ID.getTotalNodes());
+console.log('Autocomplete suggestions for "a":', autocom.suggest('a'));
 
-console.log(autocom.suggest('a'));
-
+// Export services
 export const autoCompleteService = new AutoCompleteService(
   TREE_KEYWORD_ID,
   TREE_KEYWORD_EN,
