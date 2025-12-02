@@ -10,14 +10,8 @@ import { AutoCompleteService } from '../services/AutoCompleteService';
 /* Raw Data */
 const dictionary: Entry[] = dummy.data;
 
-const TREE_KEYWORD_ID: RedBlackTree<string, Entry> = new RedBlackTree<
-  string,
-  Entry
->();
-const TREE_KEYWORD_EN: RedBlackTree<string, Entry> = new RedBlackTree<
-  string,
-  Entry
->();
+const TREE_KEYWORD_ID: RedBlackTree<string, Entry> = new RedBlackTree<string, Entry>();
+const TREE_KEYWORD_EN: RedBlackTree<string, Entry> = new RedBlackTree<string, Entry>();
 
 const autocom = new Trie();
 
@@ -38,9 +32,7 @@ const dictionaryEasterEgg: Entry[] = [
     easterEgg: {
       action: () => {
         const root: HTMLElement = document.getElementById('root')!;
-
         root.classList.add('blur');
-
         setTimeout(() => {
           root.classList.remove('blur');
         }, 5000);
@@ -79,9 +71,7 @@ const dictionaryEasterEgg: Entry[] = [
     easterEgg: {
       action: () => {
         const app: HTMLElement = document.getElementById('app')!;
-
         app.classList.add('animate-spin');
-
         setTimeout(() => {
           app.classList.remove('animate-spin');
         }, 5000);
@@ -100,6 +90,23 @@ const dictionaryEasterEgg: Entry[] = [
         const root = document.getElementById('root')!;
         root.classList.add('shake');
         setTimeout(() => root.classList.remove('shake'), 1200);
+      },
+    },
+  },
+  // === New Easter Egg: Hitam ===
+  {
+    keyword_id: 'Hitam',
+    keyword_en: 'Black',
+    definition_id:
+      'Warna paling gelap yang menyerap seluruh cahaya dan membuat tampilan menjadi gelap.',
+    definition_en:
+      'The darkest color that absorbs all light and makes the appearance dark.',
+    easterEgg: {
+      action: () => {
+        const root = document.getElementById('root')!;
+        root.style.transition = 'background 0.5s ease, color 0.5s ease';
+        root.style.background = 'black';
+        root.style.color = 'white';
       },
     },
   },
